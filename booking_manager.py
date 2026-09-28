@@ -62,6 +62,20 @@ def add_booking(bookings):
     print("Booking added successfully!")
 
 
+# Display one booking
+def display_booking(booking):
+    total_price = (
+        booking["nights"] * booking["price_per_night"]
+    )
+
+    print("--------------------")
+    print(f"Guest: {booking['guest_name']}")
+    print(f"Nights: {booking['nights']}")
+    print(f"Price per night: {booking['price_per_night']}")
+    print(f"Total price: {total_price}")
+    print(f"Status: {booking['status']}")
+
+
 # Show all bookings
 def show_bookings(bookings):
     if not bookings:
@@ -69,16 +83,7 @@ def show_bookings(bookings):
         return
 
     for booking in bookings:
-        total_price = (
-            booking["nights"] * booking["price_per_night"]
-        )
-
-        print("--------------------")
-        print(f"Guest: {booking['guest_name']}")
-        print(f"Nights: {booking['nights']}")
-        print(f"Price per night: {booking['price_per_night']}")
-        print(f"Total price: {total_price}")
-        print(f"Status: {booking['status']}")
+        display_booking(booking)
 
     print("--------------------")
 
@@ -90,16 +95,7 @@ def search_booking(bookings):
 
     for booking in bookings:
         if booking["guest_name"].lower() == name:
-            total_price = (
-                booking["nights"] * booking["price_per_night"]
-            )
-
-            print("--------------------")
-            print(f"Guest: {booking['guest_name']}")
-            print(f"Nights: {booking['nights']}")
-            print(f"Price per night: {booking['price_per_night']}")
-            print(f"Total price: {total_price}")
-            print(f"Status: {booking['status']}")
+            display_booking(booking)
             print("--------------------")
 
             found = True
